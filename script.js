@@ -16,7 +16,7 @@ function updateCounter() {
         sessionStorage.setItem('session_active', 'true');
     }
 
-    counterElement.innerText = 0;
+    counterElement.innerText = totalViews;
 
     // запрашиваем живую цифру у тындекса
     const counterId = 109151123;
