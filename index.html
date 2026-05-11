@@ -6,10 +6,20 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-KTJKMX5XB1');
     </script>
 
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109151123', 'ym');
+
+        ym(109151123, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/109151123" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Работа с AJAX, JSON и API</title>
@@ -39,13 +49,25 @@
         </section>
     </main>
 
-
     <footer>
+        <div class="footer-content" style="text-align: center;">
+            <p>2026, Кафедра <a href="https://mpi.vogu35.ru/" target="_blank">Прикладной математики</a></p>
+            <p style="font-size: 0.8em; color: #666;">Просмотров сайта: <span id="totalCounter"></span></p>
+            
+            <div style="display: none;">
+                <a href="https://metrika.yandex.ru/stat/?id=109151123&amp;from=informer" target="_blank" rel="nofollow">
+                    <img src="https://informer.yandex.ru/informer/109151123/3_1_FFFFFFFF_EFEFEFFF_0_pageviews" alt="Яндекс.Метрика" />
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- <footer>
         <div class="footer-content">
             <p>2026, Кафедра <a href="https://mpi.vogu35.ru/" target="_blank">Прикладой математики</a></p>
             <p style="font-size: 0.8em; color: #666;">Просмотров сайта: <span id="totalCounter">0</span></p>
         </div>
-    </footer>
+    </footer> -->
 
     <a href="#" class="scroll-up" id="scrollUp">↑</a>
 

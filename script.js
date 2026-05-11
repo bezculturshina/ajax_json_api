@@ -140,3 +140,29 @@ if (loadCatBtn) {
             });
     });
 }
+
+
+// тындекс метрика для счётчика
+function fetchYandexCounter() {
+    const counterId = 109151123; // ID счетчика
+
+    // загрузка библиотеки тындекса ym
+    window.addEventListener('load', () => {
+        try {
+            // запрашиваем у метрики данные по нашему счетчику
+            ym(counterId, 'get', 'pageviews', function(viewsCount) {
+                const counterElement = document.getElementById('totalCounter');
+                if (counterElement && typeof viewsCount !== 'undefined') {
+                    // ставим реальную цифру в текст футера
+                    counterElement.innerText = viewsCount;
+                }
+            });
+        } catch (e) {
+            let localViews = localStorage.getItem('total_site_visits') || 0;
+            const counterElement = document.getElementById('totalCounter');
+            if (counterElement) counterElement.innerText = localViews;
+        }
+    });
+}
+
+fetchYandexCounter();
