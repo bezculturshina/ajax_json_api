@@ -1,0 +1,525 @@
+/* Базовые настройки */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;  /* Без засечек */
+    background-color: #fdfdfd;                /* Светлый, плоский фон  */
+    color: #222;                              /* Темный текст */
+    line-height: 1.6;                           /* Интервал */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* body флекс-контейнер */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Растягиваем на всю высоту вьюпорта */
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fdfdfd;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* Выравнивание */
+p {
+    text-align: left;                           
+    margin-bottom: 15px;
+    max-width: 800px;
+}
+
+/* Хедер и навигация */
+header {
+    background-color: #c4c4c4;
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* z-index, чтобы быть выше всех карточек */
+}
+
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    margin: 0 15px;
+}
+
+
+/* Адаптивность хедера для мобильных экранов */
+@media (max-width: 500px) {
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .nav-menu li {
+        margin: 1px 0;
+    }
+}
+
+
+.nav-menu a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    transition: 0.3s;                           /* Для плавности */
+}
+
+/* Hover-анимация  */
+.nav-menu a:hover {
+    color: #ff6600;
+    text-decoration: underline;
+}
+
+/* Основной контент */
+/* main забирает всё свободное пространство, толкая футер вниз */
+main {
+    flex: 1 0 auto; 
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Иллюстрации */
+.image-placeholder {
+    background-color: #eee;
+    border: 1px dashed #999;
+    width: 100%;
+    max-width: 600px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Футер */
+footer {
+    flex-shrink: 0; 
+    background-color: #f0f0f0;
+    border-top: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto; 
+}
+
+footer p:last-child {
+    margin-bottom: 0;
+}
+
+.page-title {
+    /* Шрифт 4% от ширины экрана */
+    font-size: 4vw; 
+}
+
+
+/* Навигационная стрелка */
+.scroll-up {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #0056b3;
+    color: white;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: none;                              /* Скрыта по умолчанию */
+}
+
+#totalCounter {
+    font-weight: bold;
+    color: #0056b3;
+    background: #e9ecef;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.code-block {
+    background-color: #f4f7f9;
+    border: 1px solid #c3dae8;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.main-btn {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.main-btn:hover {
+    background-color: #003d82;
+}
+
+/* Стили для сетки типов данных */
+.types-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;                 /* Две колонки */
+    gap: 15px;
+    margin: 20px 0 30px 0;
+    max-width: 800px;
+}
+
+.type-item {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.02);     
+}
+
+.type-item strong {
+    color: #0056b3;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+    .types-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.gif-container {
+    display: flex;
+    justify-content: center; /* Центрируем гифку */
+    margin-top: 30px;        /* Отступ от текста сверху */
+    width: 100%;
+}
+
+.main-gif {
+    max-width: 100%;         
+    height: auto;
+    border-radius: 8px;      /* Скруглёные углы для красоты */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+
+
+/* AJAX */
+.comparison-container {
+    display: flex;
+    gap: 20px;
+    margin: 30px 0;
+    max-width: 900px;
+    width: 100%;
+}
+
+.comparison-card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Анимация */
+}
+
+/* Эффект при наведении */
+.comparison-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.comparison-card h3 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+}
+
+.pros h3 { color: #28a745; border-color: #28a745; }
+.cons h3 { color: #dc3545; border-color: #dc3545; }
+
+.comparison-card ul {
+    padding-left: 20px;
+    list-style-type: square;
+}
+
+.comparison-card li {
+    margin-bottom: 10px;
+    font-size: 0.95em;
+}
+
+/* Адаптация под мобильные (чтобы блоки вставали друг под друга) */
+@media (max-width: 768px) {
+    .comparison-container {
+        flex-direction: column;
+    }
+}
+
+/* Оформление шагов AJAX */
+.steps-container {
+    margin: 30px 0;
+    border-left: 2px solid #0056b3;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: transform 0.2s ease; /* Hover-анимация */
+}
+
+.step:hover {
+    transform: translateX(10px);
+    background: #f0f7ff;
+}
+
+.step-number {
+    background: #0056b3;
+    color: white;
+    min-width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #28a745;
+    background-color: #f8fff9;
+    border-radius: 5px;
+    max-width: 600px;
+}
+
+.fact-box {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f0f7ff; /* Ненасыщенный светлый фон */
+    border-left: 5px solid #0056b3;
+    border-radius: 4px;
+    max-width: 600px;
+    animation: fadeIn 0.5s ease; /* Плавное появление */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#factText {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+#factSource {
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.example-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease; /* Для плавной анимации */
+}
+
+/* Hover-анимация */
+.example-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    border-color: #0056b3;
+}
+
+.example-icon {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.example-card h3 {
+    margin-bottom: 10px;
+    color: #0056b3;
+    font-size: 1.1em;
+}
+
+.example-card p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #444;
+}
+
+/* api */
+.users-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.user-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease; /* Hover-анимация */
+}
+
+.user-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-color: #0056b3;
+}
+
+.user-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid #f0f7ff;
+}
+
+.user-card h3 {
+    margin: 10px 0 5px 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.user-card p {
+    font-size: 0.85em;
+    color: #666;
+    margin: 0;
+}
+
+.user-location {
+    font-style: italic;
+    color: #0056b3 !important;
+    margin-top: 5px !important;
+}
+
+.popular-apis {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.api-list {
+    list-style: none; /* Убираем стандартные маркеры */
+    padding: 0;
+}
+
+.api-list li {
+    position: relative;
+    padding: 12px 15px 12px 40px;
+    margin-bottom: 10px;
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.api-list li:hover {
+    background: #f0f7ff; /* Подсветка при наведении */
+}
+
+/* декоративнпя иконка */
+.api-list li::before {
+    content: "🔗";
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.api-list li strong {
+    color: #0056b3;
+}
+
+.cat-container {
+    margin: 30px 0;
+    text-align: left;
+}
+
+.cat-card {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease; /* Hover-анимация */
+}
+
+.cat-card:hover {
+    transform: scale(1.02);
+}
+
+.cat-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.cat-status {
+    margin-top: 10px;
+    font-size: 0.85em;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* about */
+/* Контейнер для фото */
+.alya {
+    display: flex;
+    justify-content: flex-start; /* Выравнивание по левому краю */
+    margin-bottom: 20px;
+}
+
+/* Стили самого изображения */
+.alya_photo {
+    width: 200px;                
+    height: 200px;               
+    object-fit: cover;           /* Чтобы фото не растягивалось, а аккуратно обрезалось в квадрат */
+    border-radius: 50%;          /* Сделает фото круглым */
+    border: 3px solid #0056b3; /* Синяя рамка */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+

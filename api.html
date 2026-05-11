@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTJKMX5XB1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-KTJKMX5XB1');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Работа с API</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="ajax.html">AJAX</a></li>
+                <li><a href="json.html">JSON</a></li>
+                <li><a href="api.html">API</a></li>
+                <li><a href="about.html">Об авторе</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+    <h1>Работа с API</h1>
+
+    <div class="content-wrapper">
+        <p class="lead-text">
+            API (Application Programming Interface) — это стандартизированный набор правил, протоколов и инструментов, который позволяет различным программным компонентам взаимодействовать друг с другом.
+        </p>
+        <p>
+            По сути, API определяет методы, с помощью которых одно приложение может запрашивать данные или функциональность у другого, не вдаваясь в детали его внутренней структуры.
+        </p>    
+        <p>
+            API служит посредником, который обеспечивает беспрепятственный обмен данными и функциональностью между приложениями. 
+            Это позволяет разработчикам создавать сложные системы, интегрируя готовые компоненты и сервисы, что значительно ускоряет разработку и повышает эффективность.
+        </p>
+        <section class="api-usage">
+            <h2>Где используют API</h2>
+            <ul class="custom-list">
+                <li><strong>Карты и геолокация:</strong> отображение маршрутов и адресов.</li>
+                <li><strong>Авторизация:</strong> вход на сайты через Google.</li>
+                <li><strong>Платежи:</strong> проведение онлайн-оплат через банковские шлюзы.</li>
+                <li><strong>Погода:</strong> получение прогнозов от метеослужб.</li>
+            </ul>
+        </section>
+
+        <section class="popular-apis">
+            <h2>Популярные бесплатные API для тестирования</h2>
+           
+            <ul class="api-list">
+                <li><strong>JSONPlaceholder</strong> — фейковое API для тестирования REST-запросов.</li>
+                <li><strong>OpenWeatherMap</strong> — получение актуальных данных о погоде по всему миру.</li>
+                <li><strong>The Cat API</strong> — бесконечный поток случайных изображений котиков.</li>
+                <li><strong>CoinGecko</strong> — детальная информация о курсах криптовалют и рынке.</li>
+                <li><strong>NASA API</strong> — доступ к огромной базе данных о космосе и снимкам со спутников.</li>
+            </ul>
+        </section>
+
+        <section class="cat-api-demo">
+            <h2>Пример использования The Cat API</h2>
+            <p>По нажатию на кнопку скрипт отправляет асинхронный запрос к API. Сервер возвращает JSON-объект со ссылкой на изображение, которое затем динамически вставляется на страницу без её перезагрузки.</p>
+            
+            <div class="cat-container">
+                <button id="loadCatBtn" class="main-btn">Получить котика</button>
+                <div id="catDisplay" class="cat-card" style="display: none;">
+                    <img id="catImage" src="" alt="Случайный котик">
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+    <footer>
+        <div class="footer-content">
+            <p>2026, Кафедра <a href="https://mpi.vogu35.ru/" target="_blank">Прикладой математики</a></p>
+            <p style="font-size: 0.8em; color: #666;">Просмотров сайта: <span id="totalCounter">0</span></p>
+        </div>
+    </footer> 
+    <a href="#" class="scroll-up" id="scrollUp">↑</a>
+    <script src="script.js"></script>
+</body>
+</html>

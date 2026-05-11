@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTJKMX5XB1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-KTJKMX5XB1');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>AJAX</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="ajax.html">AJAX</a></li>
+                <li><a href="json.html">JSON</a></li>
+                <li><a href="api.html">API</a></li>
+                <li><a href="about.html">Об авторе</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="ajax-examples">
+            <h1>Технология AJAX</h1>
+            
+            <p class="lead-text">
+                Использование AJAX позволяет обновлять части веб-страницы без её полной перезагрузки, 
+                что делает пользовательский интерфейс эргономичным и дружелюбным.
+            </p>
+
+            <div class="content-block">
+                <h2>Как это работает?</h2>
+                <p>AJAX (Asynchronous JavaScript and XML) — это технология использования существующих стандартов. 
+                    Основной принцип заключается в том, что браузер обменивается данными с сервером «за кулисами».
+                </p>
+            <p>Сегодня практически любой современный ресурс использует асинхронные запросы для повышения комфорта пользователя.</p>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">📊</div>
+                    <h3>Динамическое обновление</h3>
+                    <p>Обновление отдельных элементов, например, фильтров в онлайн-магазинах без перезагрузки всей страницы.</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-icon">📝</div>
+                    <h3>Отправка форм</h3>
+                    <p>Передача данных заполненных анкет или заявок без ожидания обновления страницы, что делает работу более плавной.</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-icon">🗺️</div>
+                    <h3>Динамические интерфейсы</h3>
+                    <p>Наглядный пример — карты (например, Google Maps), где новые участки территории подгружаются по мере прокрутки.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2> Принцип работы AJAX</h2>         
+                <div class="steps-container">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <p>На странице происходит событие (нажатие кнопки, загрузка страницы).</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <p>JavaScript создает объект XMLHttpRequest или использует fetch().</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <p>Объект отправляет запрос на сервер в фоновом режиме.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">4</span>
+                        <p>Сервер обрабатывает запрос и отправляет данные обратно (обычно в формате JSON).</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">5</span>
+                        <p>JavaScript получает данные и обновляет нужную часть страницы без перезагрузки.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-example">
+                <h2>Пример работы AJAX</h2>
+             
+                <div class="fact-container">
+                    <button id="loadFactBtn" class="main-btn">Узнать что-то новое</button>
+                    <div id="factDisplay" class="fact-box" style="display: none;">
+                        <p id="factText"></p>
+                        <small id="factSource"></small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ajax-pros-cons">
+        <h2>Преимущества и недостатки AJAX</h2>
+            <div class="comparison-container">
+                <div class="comparison-card pros">
+                    <h3>Преимущества</h3>
+                    <ul>
+                        <li><strong>Обновление без перезагрузки:</strong> делает интерфейс плавным и быстрым.</li>
+                        <li><strong>Экономия трафика:</strong> загружаются только нужные данные, а не вся страница целиком.</li>
+                        <li><strong>Снижение нагрузки:</strong> серверу не нужно заново формировать стандартные элементы (шапку, подвал).</li>
+                        <li><strong>Отзывчивость:</strong> приложение мгновенно реагирует на действия пользователя.</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-card cons">
+                    <h3>Недостатки</h3>
+                    <ul>
+                        <li><strong>Проблемы с SEO:</strong> поисковики могут не увидеть контент, подгруженный асинхронно.</li>
+                        <li><strong>Зависимость от JS:</strong> если пользователь отключит JavaScript в браузере, функции перестанут работать.</li>
+                        <li><strong>Сложность проекта:</strong> нужно обрабатывать ошибки сети и состояния загрузки.</li>
+                        <li><strong>Кэширование:</strong> динамические данные могут кэшироваться некорректно, показывая устаревшую информацию.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>2026, Кафедра <a href="https://mpi.vogu35.ru/" target="_blank">Прикладой математики</a></p>
+            <p style="font-size: 0.8em; color: #666;">Просмотров сайта: <span id="totalCounter">0</span></p>
+        </div>
+    </footer>
+    <a href="#" class="scroll-up" id="scrollUp">↑</a>
+    <script src="script.js"></script>
+</body>
+</html>

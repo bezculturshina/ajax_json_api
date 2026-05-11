@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTJKMX5XB1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-KTJKMX5XB1');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Формат данных JSON</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="ajax.html">AJAX</a></li>
+                <li><a href="json.html">JSON</a></li>
+                <li><a href="api.html">API</a></li>
+                <li><a href="about.html">Об авторе</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>JSON — стандарт обмена данными</h1>
+        <p>JSON (JavaScript Object Notation) — текстовый формат обмена данными, основанный на JavaScript. Несмотря на это, он является независимым от языка и может использоваться практически везде.
+            Например, многие программы, в том числе игры, используют json для хранения настроек, к примеру, VS Code – settings.json, 
+            в веб-разработке практически любой современный сайт получает данные в формате json,
+            кроссплатформенные мобильные приложения используют json для обмена данными с сервером и так далее. 
+        </p>
+    <section class="json-demo">
+        <h2>Как выглядят данные JSON на практике?</h2>
+        <section class="json-types">
+    <p>JSON поддерживает несколько базовых типов данных, которые позволяют описывать структуры любой сложности:</p>
+    
+    <div class="types-grid">
+            <div class="type-item"><strong>String</strong> — Текстовая строка в двойных кавычках.</div>
+            <div class="type-item"><strong>Number</strong> — Целое число или число с плавающей точкой.</div>
+            <div class="type-item"><strong>Boolean</strong> — Логическое значение: true или false.</div>
+            <div class="type-item"><strong>Object</strong> — Набор пар "ключ: значение", заключенный в фигурные скобки <code>{ ... }</code>.</div>
+            <div class="type-item"><strong>Array</strong> — Упорядоченный список значений в квадратных скобках <code>[ ... ]</code>.</div>
+            <div class="type-item"><strong>Null</strong> — Пустое значение.</div>
+        </div>
+    </section>
+        
+        <button id="showJsonBtn" class="main-btn">Пример JSON-объекта</button>
+        
+        <div id="jsonOutput" class="code-block" style="display: none;">
+            <pre><code id="jsonContent"></code></pre>
+        </div>
+    </section>
+    
+    <section class="json-pros-cons">
+        <h2>Преимущества и недостатки JSON</h2>
+        <div class="comparison-container">
+            <div class="comparison-card pros">
+                <h3>Преимущества</h3>
+                <ul>
+                    <li><strong>Легкий и компактный:</strong> Минимальный объем данных при передаче по сети.</li>
+                    <li><strong>Простой синтаксис:</strong> Легко читается человеком и быстро парсится машиной.</li>
+                    <li><strong>Универсальность:</strong> Поддерживается почти всеми языками программирования (JS, Python, PHP, Java и др.).</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card cons">
+                <h3>Недостатки</h3>
+                <ul>
+                    <li><strong>Нет функций:</strong> Передает только данные, не может содержать исполняемый код.</li>
+                    <li><strong>Без комментариев:</strong> Стандарт JSON не поддерживает комментарии внутри файла.</li>
+                    <li><strong>Объем больших данных:</strong> Для сверхсложных бинарных данных (видео, фото) лучше использовать другие форматы.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>2026, Кафедра <a href="https://mpi.vogu35.ru/" target="_blank">Прикладой математики</a></p>
+            <p style="font-size: 0.8em; color: #666;">Просмотров сайта: <span id="totalCounter">0</span></p>
+        </div>
+    </footer>
+    <a href="#" class="scroll-up" id="scrollUp">↑</a>
+    <script src="script.js"></script>
+</body>
+</html>
