@@ -1,3 +1,41 @@
+// тындекс метрика для счётчика
+function updateCounter() {
+    const counterId = 109151123; // ID счетчика 
+    
+    const counterElement = document.getElementById('totalCounter');
+    if (!counterElement) return;
+
+    let totalViews = localStorage.getItem('total_site_visits');
+    if (!totalViews) {
+        totalViews = 0;
+    }
+
+    let isSessionCounted = sessionStorage.getItem('session_active');
+    if (!isSessionCounted) {
+        totalViews = parseInt(totalViews) + 1;
+        localStorage.setItem('total_site_visits', totalViews);
+        sessionStorage.setItem('session_active', 'true');
+    }
+
+    counterElement.innerText = totalViews;
+
+    window.addEventListener('load', () => {
+        try {
+            if (typeof ym !== 'undefined') {
+                ym(counterId, 'get', 'pageviews', function(viewsCount) {
+                    if (typeof viewsCount !== 'undefined') {
+                        counterElement.innerText = viewsCount;
+                    }
+                });
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    });
+}
+updateCounter()
+
+
 // Логика навигационной стрелки
 function handleScrollUp() {
     const btn = document.getElementById("scrollUp");
@@ -114,43 +152,3 @@ if (loadCatBtn) {
 }
 
 
-// тындекс метрика для счётчика
-function updateCounter() {
-    // Пытаемся получить текущее общее количество посещений из постоянной памяти
-    let totalViews = localStorage.getItem('total_site_visits');
-    if (!totalViews) {
-        totalViews = 0;
-    }
-
-    // Проверяем отмечался ли пользователь в текущей сессии 
-    let isSessionCounted = sessionStorage.getItem('session_active');
-
-    if (!isSessionCounted) {
-        // Если в этой сессии еще не считали — прибавляем 1 к общему счетчику
-        totalViews = parseInt(totalViews) + 1;
-        
-        // Сохраняем новое общее число в постоянную память
-        localStorage.setItem('total_site_visits', totalViews);
-        
-        // Ставим метку в текущую сессию, чтобы больше не прибавлять при переходах
-        sessionStorage.setItem('session_active', 'true');
-    }
-
-    // запрашиваем живую цифру у тындекса
-    const counterId = 109151123;
-    window.addEventListener('load', () => {
-        try {
-            if (typeof ym !== 'undefined') {
-                ym(counterId, 'get', 'pageviews', function(viewsCount) {
-                    if (counterElement && typeof viewsCount !== 'undefined') {
-                        counterElement.innerText = viewsCount;
-                    }
-                });
-            }
-        } catch (e) {
-            console.error(e);
-        }
-    });
-}
-
-updateCounter()
