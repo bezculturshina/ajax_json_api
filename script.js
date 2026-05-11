@@ -116,25 +116,33 @@ if (loadCatBtn) {
 
 // тындекс метрика для счётчика
 function updateCounter() {
-    const counterId = 109151123; // ID счетчика 
-    const counterElement = document.getElementById('totalCounter');
-    
-    if (!counterElement) return;
+    // Пытаемся получить текущее общее количество посещений из постоянной памяти
+    let totalViews = localStorage.getItem('total_site_visits');
+    if (!totalViews) {
+        totalViews = 0;
+    }
 
-    let totalViews = localStorage.getItem('total_site_visits') || 0;
+    // Проверяем отмечался ли пользователь в текущей сессии 
     let isSessionCounted = sessionStorage.getItem('session_active');
 
     if (!isSessionCounted) {
+        // Если в этой сессии еще не считали — прибавляем 1 к общему счетчику
         totalViews = parseInt(totalViews) + 1;
+        
+        // Сохраняем новое общее число в постоянную память
         localStorage.setItem('total_site_visits', totalViews);
+        
+        // Ставим метку в текущую сессию, чтобы больше не прибавлять при переходах
         sessionStorage.setItem('session_active', 'true');
     }
 
+    // запрашиваем живую цифру у тындекса
+    const counterId = 109151123;
     window.addEventListener('load', () => {
         try {
             if (typeof ym !== 'undefined') {
                 ym(counterId, 'get', 'pageviews', function(viewsCount) {
-                    if (typeof viewsCount !== 'undefined') {
+                    if (counterElement && typeof viewsCount !== 'undefined') {
                         counterElement.innerText = viewsCount;
                     }
                 });
@@ -145,22 +153,4 @@ function updateCounter() {
     });
 }
 
-function fetchYandexCounter() {
-    const counterId = 109151123; // ID счетчика
-
-    // загрузка библиотеки тындекса ym
-    window.addEventListener('load', () => {
-        // запрашиваем у метрики данные по нашему счетчику
-        ym(counterId, 'get', 'pageviews', function(viewsCount) {
-            const counterElement = document.getElementById('totalCounter');
-            if (counterElement && typeof viewsCount !== 'undefined') {
-                // ставим реальную цифру в текст футера
-                counterElement.innerText = viewsCount;
-            }
-        });
-       
-    });
-}
-
 updateCounter()
-fetchYandexCounter();
