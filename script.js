@@ -1,7 +1,5 @@
 // тындекс метрика для счётчика
 function updateCounter() {
-    const counterId = 109151123; // ID счетчика 
-    
     const counterElement = document.getElementById('totalCounter');
     if (!counterElement) return;
 
@@ -11,14 +9,17 @@ function updateCounter() {
     }
 
     let isSessionCounted = sessionStorage.getItem('session_active');
+
     if (!isSessionCounted) {
         totalViews = parseInt(totalViews) + 1;
         localStorage.setItem('total_site_visits', totalViews);
         sessionStorage.setItem('session_active', 'true');
     }
 
-    counterElement.innerText = totalViews;
+    counterElement.innerText = 0;
 
+    // запрашиваем живую цифру у тындекса
+    const counterId = 109151123;
     window.addEventListener('load', () => {
         try {
             if (typeof ym !== 'undefined') {
@@ -29,11 +30,10 @@ function updateCounter() {
                 });
             }
         } catch (e) {
-            console.error(e);
+            console.error("Ошибка Метрики:", e);
         }
     });
 }
-updateCounter()
 
 
 // Логика навигационной стрелки
