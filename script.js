@@ -1,32 +1,4 @@
-function updateCounter() {
-    // 1. Пытаемся получить текущее общее количество посещений из постоянной памяти
-    let totalViews = localStorage.getItem('total_site_visits');
-    if (!totalViews) {
-        totalViews = 0;
-    }
-
-    // 2. Проверяем, "отмечался" ли пользователь в текущей сессии (этой вкладке)
-    let isSessionCounted = sessionStorage.getItem('session_active');
-
-    if (!isSessionCounted) {
-        // Если в этой сессии еще не считали — прибавляем 1 к общему счетчику
-        totalViews = parseInt(totalViews) + 1;
-        
-        // Сохраняем новое общее число в постоянную память
-        localStorage.setItem('total_site_visits', totalViews);
-        
-        // Ставим метку в текущую сессию, чтобы больше не прибавлять при переходах
-        sessionStorage.setItem('session_active', 'true');
-    }
-
-    // 3. Выводим актуальное число на экран (на любой странице)
-    const counterElement = document.getElementById('totalCounter');
-    if (counterElement) {
-        counterElement.innerText = totalViews;
-    }
-}
-
-// 2. Логика навигационной стрелки
+// Логика навигационной стрелки
 function handleScrollUp() {
     const btn = document.getElementById("scrollUp");
     if (!btn) return;
@@ -143,25 +115,56 @@ if (loadCatBtn) {
 
 
 // тындекс метрика для счётчика
+
+function updateCounter() {
+    const counterId = 109151123; // ID счетчика 
+    const counterElement = document.getElementById('totalCounter');
+    
+    if (!counterElement) return;
+
+    let totalViews = localStorage.getItem('total_site_visits') || 0;
+    let isSessionCounted = sessionStorage.getItem('session_active');
+
+    if (!isSessionCounted) {
+        totalViews = parseInt(totalViews) + 1;
+        localStorage.setItem('total_site_visits', totalViews);
+        sessionStorage.setItem('session_active', 'true');
+    }
+
+    window.addEventListener('load', () => {
+        try {
+            if (typeof ym !== 'undefined') {
+                ym(counterId, 'get', 'pageviews', function(viewsCount) {
+                    if (typeof viewsCount !== 'undefined') {
+                        counterElement.innerText = viewsCount;
+                    } else {
+                        counterElement.innerText = totalViews;
+                    }
+                });
+            } else {
+                counterElement.innerText = totalViews;
+            }
+        } catch (e) {
+            console.error("Ошибка счетчика Яндекса:", e);
+            counterElement.innerText = totalViews;
+        }
+    });
+}
+
 function fetchYandexCounter() {
     const counterId = 109151123; // ID счетчика
 
     // загрузка библиотеки тындекса ym
     window.addEventListener('load', () => {
-        try {
-            // запрашиваем у метрики данные по нашему счетчику
-            ym(counterId, 'get', 'pageviews', function(viewsCount) {
-                const counterElement = document.getElementById('totalCounter');
-                if (counterElement && typeof viewsCount !== 'undefined') {
-                    // ставим реальную цифру в текст футера
-                    counterElement.innerText = viewsCount;
-                }
-            });
-        } catch (e) {
-            let localViews = localStorage.getItem('total_site_visits') || 0;
+        // запрашиваем у метрики данные по нашему счетчику
+        ym(counterId, 'get', 'pageviews', function(viewsCount) {
             const counterElement = document.getElementById('totalCounter');
-            if (counterElement) counterElement.innerText = localViews;
-        }
+            if (counterElement && typeof viewsCount !== 'undefined') {
+                // ставим реальную цифру в текст футера
+                counterElement.innerText = viewsCount;
+            }
+        });
+       
     });
 }
 
