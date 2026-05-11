@@ -115,7 +115,6 @@ if (loadCatBtn) {
 
 
 // тындекс метрика для счётчика
-
 function updateCounter() {
     const counterId = 109151123; // ID счетчика 
     const counterElement = document.getElementById('totalCounter');
@@ -137,16 +136,11 @@ function updateCounter() {
                 ym(counterId, 'get', 'pageviews', function(viewsCount) {
                     if (typeof viewsCount !== 'undefined') {
                         counterElement.innerText = viewsCount;
-                    } else {
-                        counterElement.innerText = totalViews;
                     }
                 });
-            } else {
-                counterElement.innerText = totalViews;
             }
         } catch (e) {
-            console.error("Ошибка счетчика Яндекса:", e);
-            counterElement.innerText = totalViews;
+            console.error(e);
         }
     });
 }
