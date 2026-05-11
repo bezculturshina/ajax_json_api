@@ -162,4 +162,5 @@ function fetchYandexCounter() {
     });
 }
 
+updateCounter()
 fetchYandexCounter();
