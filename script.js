@@ -18,13 +18,12 @@ function updateCounter() {
 
     counterElement.innerText = totalViews;
 
-    // запрашиваем живую цифру у тындекса
     const counterId = 109151123;
     window.addEventListener('load', () => {
         try {
             if (typeof ym !== 'undefined') {
                 ym(counterId, 'get', 'pageviews', function(viewsCount) {
-                    if (typeof viewsCount !== 'undefined') {
+                    if (typeof viewsCount !== 'undefined' && viewsCount !== null) {
                         counterElement.innerText = viewsCount;
                     }
                 });
