@@ -523,3 +523,8 @@ footer p:last-child {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+/* Выравниваем блок со счетчиком по левому краю футера */
+.ym-counter-wrapper {
+    text-align: left;
+    margin-top: 10px; /* небольшой отступ сверху от текста */
+}
